@@ -1,0 +1,14 @@
+# Programa Astros POO:
+Éste ejercicio consiste en crear un programa que gestione mediante un menú tres clases: Atros, Planetas y Satelites.
+
+## Clase Astros
+Se trata de una clase abstracta de la cuál heredarán nuestras clases Planetas y satélites. En ésta clase definimos los atributos: nombre, radio_ecuatorial, rotacion_sobre_su_eje, masa, temperatura_media y gravedad. También tenemos dos constructores, uno vacío y otro al que le pasan los valores por parámetro. Además consta de los métodos getters y setters y un método mostrar que hace un System.out.println de nuestro objeto Astro.
+
+## Clase Planetas
+En ésta clase tenemos los atributos distancia_al_sol, orbita_al_sol, tiene_satelites y un ArrayList de Satelites llamado satelites. Tenemos dos constructores, uno vacío y otro al que le pasan los valores por parámetro. Además consta de los métodos	getters y setters y un metodo numSatelites que devuelve la longitud de nuestro arraylist de satelites. Finalmente hacemos un override del método mostrar donde llamamos al mostrar de la clase Astros y hacemos un System.out.println de nuestro objeto Planetas.
+
+## Clase Satelites
+En ésta clase tenemos los atributos distancia_al_planeta, orbita_planetaria y planeta_al_que_pertenece. También tenemos dos constructores, uno vacío y otro al que le pasan los valores por parámetro y además tenemos los métodos getters y setters y hacemos el override del método mostrar donde llamos al mostrar de la clase Astros y hacemos un System.out.println de nuestro objeto Satelites.
+
+## Clase Main
+Finalmente, en nuestra clase principal creamos un objeto global llamado planetas que es un array de objetos Planetas. Tenemos las funciones inicio, donde ejecutamos el menu; initPlanetas donde inicializamos los planetas con sus respectivos valores; elegirAstro, que le pide al usuario que elija si quiere ver los datos de un planeta o de un satélite; menuPlaneta que le pide al usuario que elija un planeta y luego le muestra un menú con las distintas opciones que puede calcular nuestro programa; mostrarPlanetas que simplemente mostramos los nombres de cada planeta; menuSatelite similar a menuPlanetas, le pide al usuario que le diga a que planeta pertenece el satélite que quiere ver, una vez elegido le pide que escoja entre los distintos satélites de cada planeta y una vez elegido le muestra un menú como el de menuPlaneta pero utilizando los datos del objeto satélite que ha seleccionado; mostrarSatelites muestra los satélites del planeta 'i'; y por último, leerInt(String msg) muestra el mensaje que le pasan por parámetro y devuelve el número entero que el usuario introduce por teclado.
