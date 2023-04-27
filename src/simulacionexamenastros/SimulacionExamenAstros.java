@@ -61,7 +61,7 @@ public class SimulacionExamenAstros {
         planetas[6].addSatelite(sat1_urano);
         planetas[6].addSatelite(sat2_urano);
         planetas[6].addSatelite(sat3_urano);
-        
+
         planetas[7] = new Planetas(4504300000L, 59800.0f, true, "Neptuno", 24764f, 16.11f, 1.02e26f, 72f, 11.15f);
         Satelites sat1_neptuno = new Satelites(354800, 0.671f, "Neptuno", "Tritón", 1353.4f, -5.88f, 214f, 38f, 0.78f);
         Satelites sat2_neptuno = new Satelites(105300, 0.295f, "Neptuno", "Nereida", 170f, 0.29f, 3.0f, 38f, 0.029f);
@@ -77,9 +77,12 @@ public class SimulacionExamenAstros {
         System.out.println("*************************************************");
         op = leerInt("Elige entre un planeta o un satelite (0-1)");
         switch (op) {
-            case 0 -> menuPlaneta();
-            case 1 -> menuSatelite();
-            default -> System.out.println("Error. Vuelve a intentarlo.");
+            case 0 ->
+                menuPlaneta();
+            case 1 ->
+                menuSatelite();
+            default ->
+                System.out.println("Error. Vuelve a intentarlo.");
         }
     }
 
@@ -94,54 +97,68 @@ public class SimulacionExamenAstros {
         System.out.println("6. Cerrar.");
         int op = leerInt("Introduce una opcion (1-6): ");
         switch (op) {
-            case 1 -> System.out.println("La masa de " + planetas[i].getNombre() + " es de: " + planetas[i].getMasa() + "kg.");
-            case 2 -> System.out.println("El diametro de " + planetas[i].getNombre() + " es de " + planetas[i].getRadio_ecuatorial() * 2 + "km.");
-            case 3 -> System.out.println("El periodo de rotacion sobre su eje es de: " + planetas[i].getRotacion_sobre_su_eje() + " horas.");
-            case 4 -> System.out.println("El periodo de traslacion alrededor del cuerpo al que orbita es: " + planetas[i].getOrbita_al_sol() + " dias terrestres.");
-            case 5 -> System.out.println("La distancia media al cuerpo al que orbitan es de: " + planetas[i].getDistancia_al_sol() + "km.");
+            case 1 ->
+                System.out.println("La masa de " + planetas[i].getNombre() + " es de: " + planetas[i].getMasa() + "kg.");
+            case 2 ->
+                System.out.println("El diametro de " + planetas[i].getNombre() + " es de " + planetas[i].getRadio_ecuatorial() * 2 + "km.");
+            case 3 ->
+                System.out.println("El periodo de rotacion sobre su eje es de: " + planetas[i].getRotacion_sobre_su_eje() + " horas.");
+            case 4 ->
+                System.out.println("El periodo de traslacion alrededor del cuerpo al que orbita es: " + planetas[i].getOrbita_al_sol() + " dias terrestres.");
+            case 5 ->
+                System.out.println("La distancia media al cuerpo al que orbitan es de: " + planetas[i].getDistancia_al_sol() + "km.");
             case 6 -> {
                 System.out.println("Fin del programa.");
                 System.exit(0);
             }
-            default -> System.out.println("Error, vuelve a intentarlo.");
+            default ->
+                System.out.println("Error, vuelve a intentarlo.");
         }
         System.out.println("*************************************************");
     }
-    
-    private void mostrarPlanetas(){
+
+    private void mostrarPlanetas() {
         for (int i = 0; i < planetas.length; i++) {
-            System.out.println(i+". "+planetas[i].getNombre());   
+            System.out.println(i + ". " + planetas[i].getNombre());
         }
     }
 
     private void menuSatelite() {
         mostrarPlanetas();
         int i = leerInt("A que planeta pertenece?");
-        mostrarSatelites(i);
-        int j = leerInt("Que satelite deseas ver?");
-        System.out.println("1. Masa del cuerpo.");
-        System.out.println("2. Diámetro del cuerpo.");
-        System.out.println("3. Periodo de rotación sobre su propio eje.");
-        System.out.println("4. Periodo de traslación alrededor del cuerpo al que orbitan.");
-        System.out.println("5. Distancia media a ese cuerpo.");
-        System.out.println("6. Cerrar.");
-        int op = leerInt("Introduce una opcion (1-6): ");
-        switch (op) {
-            case 1 -> System.out.println("La masa de " + planetas[i].getSatelite(j).getNombre() + " es de: " + planetas[i].getSatelite(j).getMasa() + "kg.");
-            case 2 -> System.out.println("El diametro de " + planetas[i].getSatelite(j).getNombre() + " es de " + planetas[i].getSatelite(j).getRadio_ecuatorial() * 2 + "km.");
-            case 3 -> System.out.println("El periodo de rotacion sobre su eje es de: " + planetas[i].getSatelite(j).getRotacion_sobre_su_eje() + " días terrestres.");
-            case 4 -> System.out.println("El periodo de traslacion alrededor del cuerpo al que orbita es: " + planetas[i].getSatelite(j).getOrbita_planetaria() + " dias.");
-            case 5 -> System.out.println("La distancia media al cuerpo al que orbitan es de: " + planetas[i].getSatelite(j).getOrbita_planetaria() + "km.");
-            case 6 -> {
-                System.out.println("Fin del programa.");
-                System.exit(0);
+        if (planetas[i].isTiene_satelites()) {
+            mostrarSatelites(i);
+            int j = leerInt("Que satelite deseas ver?");
+            System.out.println("1. Masa del cuerpo.");
+            System.out.println("2. Diámetro del cuerpo.");
+            System.out.println("3. Periodo de rotación sobre su propio eje.");
+            System.out.println("4. Periodo de traslación alrededor del cuerpo al que orbitan.");
+            System.out.println("5. Distancia media a ese cuerpo.");
+            System.out.println("6. Cerrar.");
+            int op = leerInt("Introduce una opcion (1-6): ");
+            switch (op) {
+                case 1 ->
+                    System.out.println("La masa de " + planetas[i].getSatelite(j).getNombre() + " es de: " + planetas[i].getSatelite(j).getMasa() + "kg.");
+                case 2 ->
+                    System.out.println("El diametro de " + planetas[i].getSatelite(j).getNombre() + " es de " + planetas[i].getSatelite(j).getRadio_ecuatorial() * 2 + "km.");
+                case 3 ->
+                    System.out.println("El periodo de rotacion sobre su eje es de: " + planetas[i].getSatelite(j).getRotacion_sobre_su_eje() + " días terrestres.");
+                case 4 ->
+                    System.out.println("El periodo de traslacion alrededor del cuerpo al que orbita es: " + planetas[i].getSatelite(j).getOrbita_planetaria() + " dias.");
+                case 5 ->
+                    System.out.println("La distancia media al cuerpo al que orbitan es de: " + planetas[i].getSatelite(j).getOrbita_planetaria() + "km.");
+                case 6 -> {
+                    System.out.println("Fin del programa.");
+                    System.exit(0);
+                }
+                default ->
+                    System.out.println("Error, vuelve a intentarlo.");
             }
-            default -> System.out.println("Error, vuelve a intentarlo.");
         }
         System.out.println("*************************************************");
     }
-    
-    public void mostrarSatelites(int i){
+
+    public void mostrarSatelites(int i) {
         for (int j = 0; j < planetas[i].numSatelites(); j++) {
             System.out.println(j + ". " + planetas[i].getSatelite(j).getNombre());
         }
